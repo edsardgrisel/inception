@@ -9,7 +9,8 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 
 ## Sources ##
 - Dockerfile: https://docs.docker.com/reference/dockerfile/
-- Dockercompose: https://docs.docker.com/compose/gettingstarted
+- Dockercompose quickstart: https://docs.docker.com/compose/gettingstarted
+- Dockercompose docs: https://docs.docker.com/reference/cli/docker/compose/
 - Docker debian: https://hub.docker.com/_/debian
 - https://stackoverflow.com/questions/32661246/running-nginx-on-docker
 - https://github.com/antontkv/docker-and-pid1

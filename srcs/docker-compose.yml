@@ -1,0 +1,6 @@
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx
+    ports:
+      - 1443:1443
