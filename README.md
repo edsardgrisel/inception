@@ -13,3 +13,5 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 - Docker debian: https://hub.docker.com/_/debian
 - https://stackoverflow.com/questions/32661246/running-nginx-on-docker
 - https://github.com/antontkv/docker-and-pid1
+- https://nginx.org/en/docs/http/configuring_https_servers.html
+- ssl cert: https://devcenter.heroku.com/articles/ssl-certificate-self
