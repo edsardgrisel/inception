@@ -13,5 +13,10 @@ copy_nginx_secrets:
 
 copy_all_secrets: copy_nginx_secrets
 
-
+generate_ssl_key:
+	mkdir -p $(SECRETS_DIR)
+	openssl genrsa -aes256 -passout pass:password -out $(SECRETS_DIR)/server.encrypted.key 4096
+	openssl rsa -passin pass:password -in $(SECRETS_DIR)/server.encrypted.key -out $(SECRETS_DIR)/server.decrypted.key
+	openssl req -new -key $(SECRETS_DIR)/server.decrypted.key -out $(SECRETS_DIR)/server.csr -subj "/C=NL/ST=North-Holland/L=Amsterdam/O=Codam/CN=localhost"
+	openssl x509 -req -sha256 -days 365 -in $(SECRETS_DIR)/server.csr -signkey $(SECRETS_DIR)/server.decrypted.key -out $(SECRETS_DIR)/server.crt
 
