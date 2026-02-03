@@ -11,4 +11,6 @@ COPY secrets/server.crt /etc/nginx/server.crt
 COPY secrets/server.decrypted.key /etc/nginx/secrets/server.decrypted.key
 COPY index.html /var/www/html/index.html
 
+EXPOSE 1443
+
 CMD ["nginx", "-g", "daemon off;"]
