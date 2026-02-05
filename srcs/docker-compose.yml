@@ -4,11 +4,20 @@ services:
       context: ./requirements/nginx
     ports:
       - 1443:1443
+    volumes:
+      - DB
     env_file:
       - .env
   
-  wordpress:
-    build:
-      conext: ./requirements/wordpress
-    env_file:
-      - .env
+  # wordpress:
+  #   build:
+  #     conext: ./requirements/wordpress
+  #   env_file:
+  #     - .env
+
+
+volumes:
+  WordPress:
+    name: WordPress
+  DB:
+    name: DB
