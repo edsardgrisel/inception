@@ -2,10 +2,12 @@
 
 FROM debian:bookworm-slim
 
+RUN apt-get update && apt-get install -y php curl
+
+COPY tools/run_wordpress.sh /etc/wordpress/run_wordpress.sh
+
+RUN chmod +x /etc/wordpress/run_wordpress.sh
 
 
-RUN apt-get update && apt-get install php7.3-fpm
+CMD ["/etc/wordpress/run_wordpress.sh"]
 
-COPY index.html /var/www/html/index.html
-
-CMD ["nginx", "-g", "daemon off;"]

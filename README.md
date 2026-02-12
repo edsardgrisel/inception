@@ -28,6 +28,8 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 - nginx php-fpm: https://www.digitalocean.com/community/tutorials/php-fpm-nginx
 - Docker volume vs bind mount: https://www.geeksforgeeks.org/devops/docker-volume-vs-bind-mount/
 - Docker compose volumes: https://docs.docker.com/reference/compose-file/volumes/
+- Wordpress install: https://make.wordpress.org/cli/handbook/guides/installing/
+- Wordpress cli: https://developer.wordpress.org/cli/commands/core/
 
 
 

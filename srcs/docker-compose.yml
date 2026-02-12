@@ -5,15 +5,17 @@ services:
     ports:
       - 1443:1443
     volumes:
-      - DB
+      - WordPress:/etc/wordpressvolume
     env_file:
       - .env
   
-  # wordpress:
-  #   build:
-  #     conext: ./requirements/wordpress
-  #   env_file:
-  #     - .env
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    volumes:
+      - WordPress:/etc/wordpressvolume
+    env_file:
+      - .env
 
 
 volumes:
