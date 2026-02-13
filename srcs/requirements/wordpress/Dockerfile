@@ -2,7 +2,7 @@
 
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y php curl
+RUN apt-get update && apt-get install php-mysql php-fpm curl -y
 
 COPY tools/run_wordpress.sh /etc/wordpress/run_wordpress.sh
 
