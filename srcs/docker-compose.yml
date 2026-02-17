@@ -16,6 +16,16 @@ services:
       - WordPress:/etc/wordpressvolume
     env_file:
       - .env
+    
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+    volumes:
+      - DB:/etc/mariadbvolume
+    env_file:
+      - .env
+
+
 
 
 volumes:
