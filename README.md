@@ -30,6 +30,7 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 - Docker compose volumes: https://docs.docker.com/reference/compose-file/volumes/
 - Wordpress install: https://make.wordpress.org/cli/handbook/guides/installing/
 - Wordpress cli: https://developer.wordpress.org/cli/commands/core/
+- add mariadb admin user:https://utho.com/docs/database/mariadb/how-to-create-a-user-and-grantprevileges-on-a-specific-ip/
 
 
 
