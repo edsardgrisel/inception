@@ -3,7 +3,7 @@
 FROM debian:bookworm-slim
 
 
-RUN apt-get update && apt-get install mariadb-server systemctl -y
+RUN apt-get update && apt-get install mariadb-server -y
 
 # RUN rm /etc/mariadb/run_mariadb.sh
 

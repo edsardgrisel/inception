@@ -32,7 +32,7 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 - Wordpress cli: https://developer.wordpress.org/cli/commands/core/
 - add mariadb admin user:https://utho.com/docs/database/mariadb/how-to-create-a-user-and-grantprevileges-on-a-specific-ip/
 
-
+W
 
 ssl connection:
 - check ssl connection: curl -vk https://localhost:1443/
