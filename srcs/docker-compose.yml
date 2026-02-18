@@ -8,20 +8,24 @@ services:
       - WordPress:/etc/wordpressvolume
     env_file:
       - .env
+    depends_on:
+      - wordpress
   
   wordpress:
     build:
       context: ./requirements/wordpress
     volumes:
-      - WordPress:/etc/wordpressvolume
+      - WordPress:/var/www/html
     env_file:
       - .env
+    depends_on:
+      - mariadb
     
   mariadb:
     build:
       context: ./requirements/mariadb
     volumes:
-      - DB:/etc/mariadbvolume
+      - DB:/var/lib/mysql
     env_file:
       - .env
 

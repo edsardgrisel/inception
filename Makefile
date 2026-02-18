@@ -7,6 +7,12 @@ DOCKER_COMPOSE_YAML = srcs/docker-compose.yml
 all: copy_all_secrets
 	docker-compose -f srcs/docker-compose.yml up --build
 
+re: down all
+	
+down: 
+	docker compose -f srcs/docker-compose.yml down -v
+
+
 copy_nginx_secrets:
 	mkdir -p $(NGINX_SECRETS_DIR)
 	cp $(SECRETS_DIR)/* $(NGINX_SECRETS_DIR)/
