@@ -30,6 +30,5 @@ mariadb -u root -p"$DB_ROOT_PASSWORD" < db1.sql
 kill "$pid"
 wait "$pid"
 
-echo "\nmeow---------------------------------------------------------\n"
 
 exec mariadbd --user=mysql

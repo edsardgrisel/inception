@@ -37,3 +37,7 @@ volumes:
     name: WordPress
   DB:
     name: DB
+
+networks:
+  inception:
+    name: inception

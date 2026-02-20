@@ -10,7 +10,7 @@ all: copy_all_secrets
 re: down all
 	
 down: 
-	docker compose -f srcs/docker-compose.yml down -v
+	docker compose -f srcs/docker-compose.yml down
 
 background:
 	docker-compose -f srcs/docker-compose.yml up -d
