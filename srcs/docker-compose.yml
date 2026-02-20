@@ -5,7 +5,7 @@ services:
     ports:
       - 1443:1443
     volumes:
-      - WordPress:/etc/wordpressvolume
+      - WordPress:/var/www/html
     env_file:
       - .env
     depends_on:

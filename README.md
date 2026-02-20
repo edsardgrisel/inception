@@ -31,8 +31,10 @@ install docker with apt: https://docs.docker.com/engine/install/debian/#install-
 - Wordpress install: https://make.wordpress.org/cli/handbook/guides/installing/
 - Wordpress cli: https://developer.wordpress.org/cli/commands/core/
 - add mariadb admin user:https://utho.com/docs/database/mariadb/how-to-create-a-user-and-grantprevileges-on-a-specific-ip/
+- change wordpress listen port: https://serversforhackers.com/c/php-fpm-configuration-the-listen-directive
 
 W
+- nginx.conf location: https://tundedamian.medium.com/day-20-of-100-days-of-devops-deploying-a-php-application-with-nginx-and-php-fpm-ac9e0111d88a
 
 ssl connection:
 - check ssl connection: curl -vk https://localhost:1443/

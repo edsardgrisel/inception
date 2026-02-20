@@ -62,11 +62,9 @@ wp user create \
 	--allow-root
 
 
+# configure php-fpm to listen to 9000 to communicate with nginx
+sed -i "s#listen = /run/php/php8.2-fpm.sock#listen = 0.0.0.0:9000#" /etc/php/8.2/fpm/pool.d/www.conf
+
 # dpkg -L php-fpm
 # which php-fpm
 /usr/sbin/php-fpm8.2 -F
-
-
-# delete this!!!!!!!!!!!!!
-# tail -f /dev/null
-##################################
