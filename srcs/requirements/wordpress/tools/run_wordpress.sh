@@ -4,7 +4,14 @@
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 echo -e "\n\n"
-mariadb -h "$DB_HOST" -u "$DB_ADMIN_USER" -p"$DB_ADMIN_PASS" -e "SHOW DATABASES;"
+
+
+# sleep 5
+
+until mariadb -h "$DB_HOST" -u "$DB_ADMIN_USER" -p"$DB_ADMIN_PASS" -e "SHOW DATABASES;" &>/dev/null; do
+	echo "Waiting for db to start up..."
+	sleep 1
+done
 
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
@@ -46,6 +53,7 @@ wp core install \
 
 
 # Create second user https://developer.wordpress.org/cli/commands/user/create/
+wp user get $WP_ADDITIONAL_USER --allow-root &>/dev/null || \
 wp user create \
 	$WP_ADDITIONAL_USER \
 	$WP_ADDITIONAL_USER_EMAIL \
@@ -54,7 +62,6 @@ wp user create \
 	--allow-root
 
 
-# chmod +x wp-cli.phar
-# dpkg -L php-fpm
-# which php-fpm
-# /usr/sbin/php-fpm -F
+dpkg -L php-fpm
+which php-fpm
+/usr/bin/php-fpm -F
