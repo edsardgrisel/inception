@@ -62,6 +62,11 @@ wp user create \
 	--allow-root
 
 
-dpkg -L php-fpm
-which php-fpm
-/usr/bin/php-fpm -F
+# dpkg -L php-fpm
+# which php-fpm
+/usr/sbin/php-fpm8.2 -F
+
+
+# delete this!!!!!!!!!!!!!
+# tail -f /dev/null
+##################################

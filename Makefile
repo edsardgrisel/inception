@@ -12,6 +12,9 @@ re: down all
 down: 
 	docker compose -f srcs/docker-compose.yml down -v
 
+background:
+	docker-compose -f srcs/docker-compose.yml up -d
+	@echo "Enter container with bash using: docker exec -it <container_name> /bin/bash "
 
 copy_nginx_secrets:
 	mkdir -p $(NGINX_SECRETS_DIR)
