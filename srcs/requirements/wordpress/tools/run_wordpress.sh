@@ -8,8 +8,16 @@ echo -e "\n\n"
 
 # sleep 5
 
+timeout=60
+elapsed_time=0
 until mariadb -h "$DB_HOST" -u "$DB_ADMIN_USER" -p"$DB_ADMIN_PASS" -e "SHOW DATABASES;" &>/dev/null; do
-	echo "Waiting for db to start up..."
+	if [ "$elapsed_time" -gt "$timeout" ]; then
+		echo "Error: couldn't connect to DB within timeout of $timeout seconds"
+		kill "$pid"
+		exit 1
+	fi
+	echo "Waiting for db to start up... ($elapsed_time s/$timeout s)"
+	elapsed_time=$((elapsed_time + 1))
 	sleep 1
 done
 
