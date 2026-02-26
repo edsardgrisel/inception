@@ -10,6 +10,7 @@ services:
       - .env
     depends_on:
       - wordpress
+    restart: unless-stopped
   
   wordpress:
     build:
@@ -20,6 +21,7 @@ services:
       - .env
     depends_on:
       - mariadb
+    restart: unless-stopped
     
   mariadb:
     build:
@@ -28,6 +30,7 @@ services:
       - DB:/var/lib/mysql
     env_file:
       - .env
+    restart: unless-stopped
 
 
 
