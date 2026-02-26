@@ -10,27 +10,29 @@ echo "bind-address=0.0.0.0" >> /etc/mysql/mariadb.conf.d/50-server.cnf
 DATA_DIR="/var/lib/mysql"
 
 # if [ ! -d "$DATA_DIR/mysql" ]; then
-	echo "[MariaDB Entrypoint] Empty data directory, initializing DB and users..."
+echo "[MariaDB Entrypoint] Empty data directory, initializing DB and users..."
 
-	mariadb-install-db --user=mysql --datadir="$DATA_DIR"
+mariadbd --user=mysql --skip-networking & pid="$!"
 
-	mariadbd --user=mysql --skip-networking & pid="$!"
+timeout=60
+elapsed_time=0
+until mysqladmin ping --silent; do
+	if [ "$elapsed_time" -gt "$timeout" ]; then
+		echo "Error: DB didn't start within timeout of $timeout seconds"
+		kill "$pid"
+		exit 1
+	fi
+	echo "Waiting for db to start up... ($elapsed_time s/$timeout s)"
+	elapsed_time=$((elapsed_time + 1))
+	sleep 1
+done
 
-	timeout=60
-	elapsed_time=0
-	until mariadb -u root -e "SELECT 1;" &>/dev/null; do
-		if [ "$elapsed_time" -gt "$timeout" ]; then
-			echo "Error: DB didn't start within timeout of $timeout seconds"
-			kill "$pid"
-			exit 1
-		fi
-		echo "Waiting for db to start up... ($elapsed_time s/$timeout s)"
-		elapsed_time=$((elapsed_time + 1))
-		sleep 1
-	done
-
-	mysql <<EOF
+mysql <<EOF
 USE mysql;
+
+CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';
+CREATE USER IF NOT EXISTS 'root'@'127.0.0.1' IDENTIFIED BY '$DB_ROOT_PASSWORD';
+CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '$DB_ROOT_PASSWORD';
 
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';
 ALTER USER 'root'@'127.0.0.1' IDENTIFIED BY '$DB_ROOT_PASSWORD';
@@ -44,8 +46,8 @@ CREATE USER IF NOT EXISTS '$DB_SECOND_USER'@'%' IDENTIFIED BY '$DB_SECOND_PASS';
 FLUSH PRIVILEGES;
 EOF
 
-	kill "$pid"
-	wait "$pid"
+kill "$pid"
+wait "$pid"
 # fi
 
 echo "Executing mariadb now"
