@@ -13,7 +13,6 @@ elapsed_time=0
 until mariadb -h "$DB_HOST" -u "$DB_ADMIN_USER" -p"$DB_ADMIN_PASS" -e "SHOW DATABASES;" &>/dev/null; do
 	if [ "$elapsed_time" -gt "$timeout" ]; then
 		echo "Error: couldn't connect to DB within timeout of $timeout seconds"
-		kill "$pid"
 		exit 1
 	fi
 	echo "Waiting for db to start up... ($elapsed_time s/$timeout s)"
