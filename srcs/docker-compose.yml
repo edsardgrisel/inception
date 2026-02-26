@@ -10,6 +10,8 @@ services:
       - .env
     depends_on:
       - wordpress
+    networks:
+      - inception
     restart: unless-stopped
   
   wordpress:
@@ -21,6 +23,8 @@ services:
       - .env
     depends_on:
       - mariadb
+    networks:
+      - inception
     restart: unless-stopped
     
   mariadb:
@@ -30,6 +34,8 @@ services:
       - DB:/var/lib/mysql
     env_file:
       - .env
+    networks:
+      - inception
     restart: unless-stopped
 
 
